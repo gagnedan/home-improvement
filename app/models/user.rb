@@ -3,4 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # :registerable, :recoverable, :trackable,
   devise :database_authenticatable
+  devise :omniauthable, omniauth_providers: [:facebook]
+
+  def self.sign_in_from_facebook(auth)
+  	
+  	where(facebook_id: auth.uid).first_or_create() do |user|
+  		user.email = auth.info.email
+  		user.password = Devise.friendly_token[0, 20]
+  	end
+  
+  end
 end

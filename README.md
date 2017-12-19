@@ -2,7 +2,7 @@
 
 * Ruby version : ruby 2.4.3p205
 
-* Specific GEM : Devise, OmniAuth
+* Specific GEM : Devise, OmniAuth, OmniAuth-Facebook
 
 * Configuration
 
@@ -39,3 +39,8 @@ postgresql user is your current OS X username with no password
 rails new home-improvement -d postgresql 
 # Create the database
 rake db:create
+
+# Temps sur le projet
+1. Setup : 30 minutes
+2. Intégration de Devise : 1 heure
+3. Intégration de OmniAuth pour Facebook : 1 heure
