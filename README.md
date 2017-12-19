@@ -1,13 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version : ruby 2.4.3p205
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+* Specific GEM : Devise, OmniAuth
 
 * Configuration
 
