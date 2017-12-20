@@ -16,39 +16,24 @@ class Ability
   end
 
   def user 
-    can [:read], Project, :is_public => true
-    can [:create, :edit, :update], [Project, Comment], :user_id => @current_user.id
-    can [:read], Comment
+    #can :manage, :all
+
+    # Users will be able to create their own home-improvement project
+    can [:create], Project
+
+    # Users will see all public projects
+    can [:read, :edit, :update], Project, { :is_public => true}
+
+    # Users cannot delete projects
+    cannot [:delete], Project
+
+    # Users will be able to view a public project and its comments
+    can [:read], Comment, project: { :is_public => true }
+
+    # Users will be able to add a comment to a public project
+    # Users will be able to comment on public projects
+    can [:create], Comment, project: { :is_public => true }
+
+
   end
-
-    #can :read, Project, :is_public => true, user.role == "admin"
-
-    #can :manage, :all if user.role == "admin"
-
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 end

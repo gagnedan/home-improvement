@@ -5,9 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :project
+  has_many :projects, dependent: :destroy
+  has_many :comments
 
   ROLES = %i[admin user]
+
+  validates :email, :password, presence: true
 
   def self.sign_in_from_facebook(auth)
   	

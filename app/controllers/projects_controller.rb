@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   #before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   load_and_authorize_resource
 
   # GET /projects
@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.update(project_update_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
@@ -66,8 +66,18 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
+  
     def project_params
-      params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status, :user_id)
+        params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status, :user_id)
+    end
+    
+    # User cannot edit a public project’s name or effort-level
+    # (a project he is not owner of)
+    def project_update_params
+        if current_user.id == @project.user_id || current_user.role == "admin"
+          params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status)
+        else
+          params.require(:project).permit(:description, :is_public, :status)
+        end
     end
 end

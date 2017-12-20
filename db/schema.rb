@@ -18,9 +18,11 @@ ActiveRecord::Schema.define(version: 20171219231346) do
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.bigint "project_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_comments_on_project_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -47,5 +49,6 @@ ActiveRecord::Schema.define(version: 20171219231346) do
   end
 
   add_foreign_key "comments", "projects"
+  add_foreign_key "comments", "users"
   add_foreign_key "projects", "users"
 end
