@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :signed_in?, :is_admin?
 
 	rescue_from CanCan::AccessDenied do |exception|
 			session[:last_page] = request.env['HTTP_REFERER']

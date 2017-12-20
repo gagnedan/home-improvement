@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+admin_project:
+  name: Project 1
   description: MyText
-  user: one
+  is_public: f
+  estimated_effort: 10
+  actual_effort: 10
+  status: created
+  user: admin
 
-two:
-  name: MyString
+user_project:
+  name: Project 2
   description: MyText
-  user: two
+  is_public: t
+  estimated_effort: 10
+  actual_effort: 10
+  status: created
+  user: user

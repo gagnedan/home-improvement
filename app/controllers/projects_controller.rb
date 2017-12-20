@@ -31,7 +31,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_update_params)
+    current_user_role = current_user.role
+    current_user_id = current_user.id
+    project_owner_id = @project.user_id
+
+    if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
       flash[:notice] = "Project successfully updated!"
       redirect_to @project
     else
@@ -45,19 +49,20 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  class UserParams
+    def self.build (params, current_user_role, current_user_id, project_owner_id)
+      if current_user_role == "user" && current_user_id != project_owner_id  
+          params.require(:project).permit(:description, :is_public, :status)
+        else
+          params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status)
+        end
+    end
+  end
+
+
   private
   
     def project_params
         params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status, :user_id)
-    end
-    
-    # User cannot edit a public project’s name or effort-level
-    # (a project he is not owner of)
-    def project_update_params
-        if current_user.id == @project.user_id || current_user.role == "admin"
-          params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status)
-        else
-          params.require(:project).permit(:description, :is_public, :status)
-        end
     end
 end

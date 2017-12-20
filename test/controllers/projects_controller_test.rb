@@ -1,6 +1,9 @@
+=begin
 require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
+
+  fixtures :users
   setup do
     @project = projects(:one)
   end
@@ -46,3 +49,4 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to projects_url
   end
 end
+=end
