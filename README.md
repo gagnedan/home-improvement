@@ -2,7 +2,7 @@
 
 * Ruby version : ruby 2.4.3p205
 
-* Specific GEM : Devise, OmniAuth, OmniAuth-Facebook
+* Specific GEM : Devise, OmniAuth, OmniAuth-Facebook, CanCanCan
 
 * Configuration
 

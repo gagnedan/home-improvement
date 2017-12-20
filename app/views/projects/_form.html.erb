@@ -1,0 +1,50 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :project_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :project_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estimated_effort %>
+    <%= form.text_field :estimated_effort, id: :project_estimated_effort %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actual_effort %>
+    <%= form.text_field :actual_effort, id: :project_actual_effort %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_public %><br />
+    <%= form.label :is_public, "public", :value => "true"  %>
+    <%= form.radio_button :is_public, true %>
+    <%= form.label :is_public, "private", :value => "false" %>
+    <%= form.radio_button :is_public, false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %><br>
+    <%= form.select :status, Project.statuses.keys %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

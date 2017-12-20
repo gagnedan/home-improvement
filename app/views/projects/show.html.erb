@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user.email %>
+</p>
+
+<p>
+  <strong>Is Public:</strong>
+  <%= @project.is_public %>
+</p>
+
+<p>
+  <strong>Estimated effort:</strong>
+  <%= @project.estimated_effort %>
+</p>
+
+<p>
+  <strong>Actual effort:</strong>
+  <%= @project.actual_effort %>
+</p>
+
+<p>
+  <strong>Actual effort:</strong>
+  <%= @project.status %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <% @project.comments.each do |comment|%>
+  <%= comment.body %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

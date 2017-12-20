@@ -6,7 +6,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :encrypted_password, null: false, default: ""
 
       ## omniauthable
-      t.string :facebook_id 
+      t.string :facebook_id
+
+      ## role
+      t.string :role
 
       t.timestamps null: false
     end
