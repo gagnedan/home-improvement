@@ -12,8 +12,6 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -33,10 +31,21 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'cancancan'
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.3'
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 1.7'
+# Facebook OAuth2 Strategy for OmniAuth
+gem 'omniauth-facebook', '~> 4.0'
+# Simple authorization solution for Rails. All permissions are stored in a single location.
+gem 'cancancan', '~> 2.1'
+
+# Sass-powered version of Bootstrap 3
+gem 'bootstrap-sass', '~> 3.3.7'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application
+gem 'jquery-rails', '~> 4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
