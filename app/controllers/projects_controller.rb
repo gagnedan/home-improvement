@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @projects = Project.all.accessible_by(current_ability)
+    @projects = Project.all.accessible_by(current_ability).order(:id)
   end
 
   def show
@@ -35,11 +35,15 @@ class ProjectsController < ApplicationController
     current_user_id = current_user.id
     project_owner_id = @project.user_id
 
-    if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
-      flash[:notice] = "Project successfully updated!"
-      redirect_to @project
-    else
-      render :new
+    puts params.inspect
+    respond_to do |format|
+      if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
+        format.html { redirect_to @project, notice: 'Player was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render :new }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 

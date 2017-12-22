@@ -46,6 +46,8 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
 # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application
 gem 'jquery-rails', '~> 4.3'
+# Render components in views or controller actions.
+gem 'react-rails', '~> 2.4', '>= 2.4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

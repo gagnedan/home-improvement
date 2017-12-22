@@ -8,6 +8,8 @@
 
 user = User.new(
       :email => "admin@admin.com",
+      :first_name => "Daniel",
+      :last_name => "Gagné",
       :password => "123456",
       :password_confirmation => "123456",
       :role => "admin" 
