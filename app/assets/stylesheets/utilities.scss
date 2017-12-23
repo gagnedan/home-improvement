@@ -46,6 +46,10 @@ h6,
   text-transform: uppercase;
 }
 
+.alert-notice {
+  @extend .alert-success;
+}
+
 body {
   padding-top: 70px;
   background-color: $body-bg;
