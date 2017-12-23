@@ -6,7 +6,7 @@
       <div class="block-header">
         <div class="row">
           <div class="col-sm-7">
-            <h2 class="block-title">Project Title</h2></div>
+            <h2 class="block-title"><%= project.name %></h2></div>
           <div class="col-sm-5">
             <table class="table-bordered block-table text-center">
               <tbody>
@@ -24,12 +24,24 @@
 
       <!-- Begin block content -->
       <div class="block-content">
-        <i class="glyphicon glyphicon-user"></i>
-        <span class="push-5-l push-5-r"><%= project.user.fullname %></span>
-        <i class="glyphicon glyphicon-time"></i>
-        <span class="push-5-l push-5-r">
-	    		<%= time_ago_in_words(project.created_at) %>
-	    	</span>
+      	<div class="row">
+          <div class="col-sm-7">
+		        <i class="glyphicon glyphicon-user"></i>
+		        <span class="push-5-l push-5-r"><%= project.user.fullname %></span>
+		        <i class="glyphicon glyphicon-time"></i>
+		        <span class="push-5-l push-5-r">
+			    		<%= time_ago_in_words(project.created_at) %>
+			    	</span>
+          </div>
+          <div class="col-sm-5">
+          	<%= link_to edit_project_path(project), class:"pull-right" do %>
+							<i class="glyphicon glyphicon-edit"></i><span class="push-5-l">Modifier le projet</span>
+        		<% end %>
+          </div>
+        </div>
+
+
+
         <div class="row push-10-t">
           <div class="col-sm-7">
             <div>
@@ -58,11 +70,10 @@
           </div>
         </div>
         <div class="row push-10-t">
-          <div class="col-sm-6">
-            <%= link_to 'Ajouter un commentaire', new_project_comment_path(project.id) %>
-          </div>
-          <div class="col-sm-6 text-right">
-            <%= link_to 'Modifier le projet', edit_project_path(project) %>
+          <div class="col-sm-12">
+	        	<%= link_to new_project_comment_path(project.id) do %>
+							<i class="glyphicon glyphicon-plus"></i><span class="push-5-l">Ajouter un commentaire</span>
+						<% end %>
           </div>
         </div>
       </div>
