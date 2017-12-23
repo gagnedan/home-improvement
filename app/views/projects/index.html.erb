@@ -1,8 +1,99 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Projects</h1>
-<%= react_component('ProjectList') %>
+<p id="notice">
+  <%= notice %>
+</p>
 <% @projects.each do |project| %>
-<%= link_to 'Edit', edit_project_path(project) %>
-<% end %>
-<%= link_to 'New Project', new_project_path %>
+  <div class="col-md-8 col-md-offset-2">
+  	<!-- Begin block container -->
+    <div class="block block-bordered block-rounded">
+    	<!-- Begin block header -->
+      <div class="block-header">
+        <div class="row">
+          <div class="col-sm-7">
+            <h2 class="block-title">Project Title</h2></div>
+          <div class="col-sm-5">
+            <table class="table-bordered block-table text-center">
+              <tbody>
+                <tr>
+                  <td class="col-sm-6 <%= project.status %>">
+                    <%= project.status.capitalize %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- End block header -->
+
+      <!-- Begin block content -->
+      <div class="block-content">
+        <i class="glyphicon glyphicon-user"></i>
+        <span class="push-5-l push-5-r"><%= project.user.fullname %></span>
+        <i class="glyphicon glyphicon-time"></i>
+        <span class="push-5-l push-5-r">
+	    		<%= time_ago_in_words(project.created_at) %>
+	    	</span>
+        <div class="row push-10-t">
+          <div class="col-sm-7">
+            <div>
+              <%= project.description %>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <table class="table-bordered block-table bg-gray-lighter text-center">
+              <tbody>
+                <tr>
+                  <td class="col-sm-6">
+                    <div>Estimated level of effort</div>
+                    <div class="h1">
+                      <%= project.estimated_effort %>
+                    </div>
+                  </td>
+                  <td class="col-sm-6">
+                    <div>Actual level of effort</div>
+                    <div class="h1">
+                      <%= project.actual_effort %>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row push-10-t">
+          <div class="col-sm-6">
+            <%= link_to 'Ajouter un commentaire', new_project_comment_path(project.id) %>
+          </div>
+          <div class="col-sm-6 text-right">
+            <%= link_to 'Modifier le projet', edit_project_path(project) %>
+          </div>
+        </div>
+      </div>
+      <!-- End block content -->
+
+      <!-- Begin block comment -->
+      <div class="block-comment">
+        <% project.comments.each do |comment| %>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="col-sm-12">
+                  <div><i class="glyphicon glyphicon-user"></i>
+                    <span class="push-5-l"><%= comment.user.fullname %></span>
+                  </div>
+                  <div class="push-10-t">
+                    <%= comment.body %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <% end %>
+      </div>
+      <!-- End block comment -->
+    </div>
+    <!-- End block container -->
+  </div>
+  <!-- bootstrap -->
+  <% end %>
+  <%= react_component('ProjectList') %>

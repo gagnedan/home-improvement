@@ -1,0 +1,48 @@
+//
+// Utilities
+// --------------------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+  font-family: $font-family-base;
+  font-weight: 600;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.push-5-l {
+  margin-left: 5px !important;
+}
+
+.push-5-r {
+  margin-right: 5px !important;
+}
+
+.push-10-t {
+  margin-top: 10px !important;
+}
+
+.push-10-l {
+  margin-left: 10px !important;
+}
+
+.bg-gray-lighter {
+    background-color: $gray-lighter;
+}
+
+body {
+  padding-top: 70px;
+  background-color: $body-bg;
+  font-family: $font-family-base;
+}

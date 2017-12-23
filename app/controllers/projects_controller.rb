@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     puts params.inspect
     respond_to do |format|
       if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
-        format.html { redirect_to @project, notice: 'Player was successfully updated.' }
+        format.html { redirect_to projects_path, notice: 'Player was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :new }

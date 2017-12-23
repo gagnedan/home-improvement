@@ -22,4 +22,8 @@ class User < ApplicationRecord
       user.role = "user"
   	end
   end
+
+  def fullname
+    "#{first_name} #{last_name}"
+  end
 end

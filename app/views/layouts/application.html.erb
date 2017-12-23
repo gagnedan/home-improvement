@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home Improvement</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "header" %>
   </head>
-  <h1>Home Improvement</h1>
-  <p>
-      <% if user_signed_in? %>
-        <%= @current_user.email %> : 
-        <%= link_to "Se déconnecté", destroy_user_session_path, :method => :delete %>
-      <% end %>
-  </p>
-  <body>
-    <%= yield %>
+  <body class="page-header-fixed">
+  <!-- BEGIN HEADER -->
+  <div class="header navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= render "navbar" %>
+      </div>
+    </div>
+  </div>
+  <!-- END HEADER -->
+  <div class="container">
+  <%= yield %>
+  </div>
+
+    
   </body>
 </html>

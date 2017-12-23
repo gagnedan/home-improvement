@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Comment successfully created!"
-      redirect_to @project
+      redirect_to projects_path
     else
       render :new
     end
