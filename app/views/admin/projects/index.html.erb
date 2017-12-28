@@ -12,7 +12,7 @@
     <th>Estimated Effort</th>
     <th>Actual Effort</th>
     <th>Status</th>
-    <th>Action</th>
+    <th colspan="2">Action</th>
   </tr>
 </thead>
 <tbody>
@@ -25,7 +25,8 @@
     <td><%= project.estimated_effort %></td>
     <td><%= project.actual_effort %></td>
     <td><%= project.status %></td>
-    <td><%= link_to 'Destroy', admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "Edit", edit_admin_project_path(project) %></td>
+    <td><%= link_to "Destroy", admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
 </tbody>

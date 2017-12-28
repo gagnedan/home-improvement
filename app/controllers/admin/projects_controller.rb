@@ -7,16 +7,30 @@ class Admin::ProjectsController < Admin::AdminController
     @projects = Project.all
   end
 
+  def edit
+  end
+
   def destroy
     @project.destroy
     flash[:notice] = "Project successfully deleted!"
     redirect_to admin_projects_path
   end
 
+  def update
+
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(project_params)
+      flash[:notice] = "Project successfully updated!"
+      redirect_to admin_projects_path
+    else
+      render action: :edit
+    end
+  end
 
   private
   
     def project_params
-        params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status, :user_id)
+        params.require(:project).permit(:name, :description)
     end
 end
