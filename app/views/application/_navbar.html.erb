@@ -23,15 +23,22 @@
           </li>
       	<% end %>
       </ul>
+      <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <% if user_signed_in? %>
-            <p class="navbar-btn">
+          <p class="navbar-btn">
+            <% if is_admin? %>
+              <%= link_to "admin", admin_dashboard_path, class:"btn  btn-warning btn-sm push-5-r" %>
+            <% end %>
+          </p>
+        </li>
+        <li>
+          <p class="navbar-btn">
             <%= button_to "Sign out", destroy_user_session_path, method: "delete", class:"btn  btn-primary btn-sm" %>
-            </p>
-          <% end%>
+           </p>    
         </li>
       </ul>
+      <% end%>
      </div>
   </div>
 </nav>

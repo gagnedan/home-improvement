@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<table class="table table-bordered push-10-t">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Public</th>
+    <th>Estimated Effort</th>
+    <th>Actual Effort</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td width="400px"><%= project.description %></td>
+    <td><%= project.user.fullname %></td>
+    <td><%= project.is_public %></td>
+    <td><%= project.estimated_effort %></td>
+    <td><%= project.actual_effort %></td>
+    <td><%= project.status %></td>
+    <td><%= link_to 'Destroy', admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
 	def index
     #@comments = Comment.all.accessible_by(current_ability)
-    @comments = Comment.where(project_id: params[:project_id])
+    @comments = Comment.where(project_id: params[:project_id]).accessible_by(current_ability)
   end
 
 

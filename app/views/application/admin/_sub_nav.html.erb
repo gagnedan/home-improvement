@@ -1,0 +1,16 @@
+<div class="sub-header-nav">
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if controller_name == 'dashboard' %>">
+      <%= link_to "Dashboard", admin_dashboard_path %>
+    </li>
+    <li class="<%= 'active' if controller_name == 'projects' %>">
+      <%= link_to "Projects", admin_projects_path %>
+    </li>
+    <li class="<%= 'active' if controller_name == 'comments' %>">
+      <%= link_to "Comments", admin_comments_path %>
+    </li>
+    <li class="<%= 'active' if controller_name == 'users' %>">
+      <%= link_to "Users", admin_users_path %>
+    </li>
+  </ul>
+</div>

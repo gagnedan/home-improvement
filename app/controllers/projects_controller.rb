@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       flash[:notice] = "Project successfully created!"
-      redirect_to @project
+      redirect_to projects_path
     else
       render :new
     end
@@ -46,12 +46,6 @@ class ProjectsController < ApplicationController
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def destroy
-    @project.destroy
-    flash[:notice] = "Project successfully deleted!"
-    redirect_to @project
   end
 
   class UserParams

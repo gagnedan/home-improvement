@@ -11,5 +11,12 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
+  namespace :admin do
+    get "dashboard" => "dashboard#index" #singular resources
+    resources :projects
+    resources :users
+    resources :comments
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
