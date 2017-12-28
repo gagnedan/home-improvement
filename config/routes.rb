@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root :to => "devise/sessions#new"
 
-  resources :projects do
+  resources :projects, :shallow => true do
   	resources :comments
   end
 

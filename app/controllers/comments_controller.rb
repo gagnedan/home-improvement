@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :project
   load_and_authorize_resource :comment, through: :project
 
-	 def index
-    @comments = Comment.all.accessible_by(current_ability)
+	def index
+    #@comments = Comment.all.accessible_by(current_ability)
+    @comments = Comment.where(project_id: params[:project_id])
   end
+
 
    def new
    end

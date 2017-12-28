@@ -40,8 +40,6 @@
           </div>
         </div>
 
-
-
         <div class="row push-10-t">
           <div class="col-sm-7">
             <div>
@@ -69,34 +67,27 @@
             </table>
           </div>
         </div>
-        <div class="row push-10-t">
-          <div class="col-sm-12">
-	        	<%= link_to new_project_comment_path(project.id) do %>
-							<i class="glyphicon glyphicon-plus"></i><span class="push-5-l">Ajouter un commentaire</span>
-						<% end %>
-          </div>
-        </div>
       </div>
       <!-- End block content -->
 
       <!-- Begin block comment -->
-      <div class="block-comment">
-        <% project.comments.each do |comment| %>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td class="col-sm-12">
-                  <div><i class="glyphicon glyphicon-user"></i>
-                    <span class="push-5-l"><%= comment.user.fullname %></span>
-                  </div>
-                  <div class="push-10-t">
-                    <%= comment.body %>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <% end %>
+      <div class="block-comment-header">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
+              <i class="glyphicon glyphicon-comment"></i><span class="push-5-l">Commenter</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="block-comment" id="<%="block#{project.id}"%>">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= react_component 'Comment', { project_id: project.id} %>
+            <%= react_component 'CommentForm', { project_id: project.id} %>
+          </div>
+        </div>
+        
       </div>
       <!-- End block comment -->
     </div>
@@ -104,4 +95,3 @@
   </div>
   <!-- bootstrap -->
   <% end %>
-  <%= react_component('ProjectList') %>

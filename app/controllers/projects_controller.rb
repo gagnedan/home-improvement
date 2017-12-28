@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all.accessible_by(current_ability).order(:id)
+    @comments = Comment.new
   end
 
   def show
