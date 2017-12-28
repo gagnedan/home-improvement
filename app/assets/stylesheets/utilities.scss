@@ -2,25 +2,6 @@
 // Utilities
 // --------------------------------------------------
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  margin: 0;
-  font-family: $font-family-base;
-  font-weight: 600;
-  line-height: 1.2;
-  color: inherit;
-}
-
 .push-5-l {
   margin-left: 5px !important;
 }
@@ -41,17 +22,8 @@ h6,
     background-color: $gray-lighter;
 }
 
-.navbar-brand {
-  font-size: 20px;
-  text-transform: uppercase;
-}
 
-.alert-notice {
-  @extend .alert-success;
-}
 
-body {
-  padding-top: 70px;
-  background-color: $body-bg;
-  font-family: $font-family-base;
-}
+
+
+

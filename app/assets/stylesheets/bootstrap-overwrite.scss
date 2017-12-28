@@ -1,0 +1,53 @@
+//
+// Bootstrap Overwrite & Extend
+// --------------------------------------------------
+
+// Scaffolding
+html, body {
+    height: 100%;
+}
+
+body {
+		padding-top: 70px;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    color: $text-color;
+    background-color: $body-bg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+  font-family: $font-family-base;
+  font-weight: 600;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.navbar-default {
+  background-color: #2954a0;
+  
+  .navbar-brand {
+    color: #FFFFFF;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
