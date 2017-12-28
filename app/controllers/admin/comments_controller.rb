@@ -9,7 +9,7 @@ class Admin::CommentsController < Admin::AdminController
 
   def destroy
     @comment.destroy
-    flash[:notice] = "Project successfully deleted!"
+    flash[:notice] = "Comment successfully deleted!"
     redirect_to admin_comments_path
   end
 

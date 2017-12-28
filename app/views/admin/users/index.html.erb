@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+
+<table class="table table-bordered push-10-t">
+<thead>
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Role</td>
+    <td>Action</td>
+  </tr>
+</thead>
+<tbody>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.fullname %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

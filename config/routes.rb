@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get "dashboard" => "dashboard#index" #singular resources
     resources :projects
     resources :users
     resources :comments

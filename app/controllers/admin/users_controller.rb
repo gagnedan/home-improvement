@@ -1,16 +1,16 @@
-class Admin::ProjectsController < Admin::AdminController
+class Admin::UsersController < Admin::AdminController
   #before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
 
   def index
-    @projects = Project.all
+    @users = User.where(role: "user")
   end
 
   def destroy
-    @project.destroy
-    flash[:notice] = "Project successfully deleted!"
-    redirect_to admin_projects_path
+    @user.destroy
+    flash[:notice] = "User successfully deleted!"
+    redirect_to admin_users_path
   end
 
 
