@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comments</h1>
+
+
+<table class="table table-bordered push-10-t">
+<thead>
+  <tr>
+    <td>Project</td>
+    <th>Commentaire</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.project.name%>
+    <td><%= comment.body %></td>
+    <td><%= link_to 'Destroy', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
