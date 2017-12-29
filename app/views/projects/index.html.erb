@@ -41,14 +41,6 @@
 			    		<%= time_ago_in_words(project.created_at) %>
 			    	</span>
           </div>
-          <div class="col-sm-5">
-            <% if !is_admin? %>
-              <%= link_to edit_project_path(project), class:"pull-right" do %>
-                <i class="glyphicon glyphicon-edit"></i><span class="push-5-l">Modifier le projet</span>
-              <% end %>
-            <% end %>
-          	
-          </div>
         </div>
 
         <div class="row push-10-t">
@@ -84,9 +76,16 @@
       <!-- Begin block comment -->
       <div class="block-comment-header">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-7">
             <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
               <i class="glyphicon glyphicon-comment"></i><span class="push-5-l">Commenter</span>
+            <% end %>
+          </div>
+          <div class="col-sm-5">
+            <% if !is_admin? %>
+              <%= link_to edit_project_path(project), class:"pull-right" do %>
+                <i class="glyphicon glyphicon-edit"></i><span class="push-5-l">Modifier le projet</span>
+              <% end %>
             <% end %>
           </div>
         </div>
