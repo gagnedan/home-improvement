@@ -29,7 +29,13 @@ class Ability
     can [:create], Project
 
     # Users will see all public projects
-    can [:read, :edit, :update], Project, { :is_public => true}
+    #can [:read, :edit, :update], Project, Project.where("is_public = ? or user_id = ?", true, @current_user.id)
+    
+    # Users will see all public projects or project they owned (public or not)
+    can [:read, :edit, :update] , Project, Project.where("is_public = ? or user_id = ?", true, @current_user.id) do |project|
+      project.is_public?
+      user_id = @current_user.id
+    end
 
     # Users cannot delete projects, comments or userss
     cannot [:destroy], [Project, Comment, User]
