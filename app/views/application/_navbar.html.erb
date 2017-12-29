@@ -15,10 +15,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<% if user_signed_in? %>
+				<% if user_signed_in? && !is_admin? %>
       		<li>
               <p class="navbar-btn push-10-l">
-                <%= link_to 'New Project', new_project_path, class: "btn btn-success  btn-sm"%>
+                <%= link_to 'New Project', new_project_path, class: "btn btn-danger  btn-sm"%>
               </p>
           </li>
       	<% end %>
@@ -34,7 +34,7 @@
         </li>
         <li>
           <p class="navbar-btn">
-            <%= button_to "Sign out", destroy_user_session_path, method: "delete", class:"btn  btn-primary btn-sm" %>
+            <%= button_to "Sign out", destroy_user_session_path, method: "delete", class:"btn  btn-success btn-sm" %>
            </p>    
         </li>
       </ul>
