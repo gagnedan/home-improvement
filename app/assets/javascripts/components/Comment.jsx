@@ -43,7 +43,6 @@ class Comment extends React.Component {
 	}
 
 	componentWillUnmount() {
-		alert('unmount');
     this.serverRequest.abort();
   }
 
