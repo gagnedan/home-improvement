@@ -37,10 +37,16 @@ class Comment extends React.Component {
 
 	componentDidMount() {
 		var project_id = this.props.project_id;
-		$.getJSON("/projects/" + project_id + "/comments", response => {
+		this.serverRequest = $.getJSON("/projects/" + project_id + "/comments", response => {
 			this.setState({ comments: response });
 		});
 	}
+
+	componentWillUnmount() {
+		alert('unmount');
+    this.serverRequest.abort();
+  }
+
 
 	render() {
 		var allComments = this.state.comments.map(function(comment, index) {
