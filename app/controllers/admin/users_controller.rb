@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::AdminController
   load_and_authorize_resource
 
   def index
-    @users = User.where(role: "user")
+    @users = User.where(role: "user").order(:id)
   end
 
   def destroy

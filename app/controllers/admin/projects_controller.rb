@@ -4,16 +4,11 @@ class Admin::ProjectsController < Admin::AdminController
   load_and_authorize_resource
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(:id)
   end
 
   def edit
-  end
 
-  def destroy
-    @project.destroy
-    flash[:notice] = "Project successfully deleted!"
-    redirect_to admin_projects_path
   end
 
   def update
@@ -26,6 +21,12 @@ class Admin::ProjectsController < Admin::AdminController
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @project.destroy
+    flash[:notice] = "Project successfully deleted!"
+    redirect_to admin_projects_path
   end
 
   private

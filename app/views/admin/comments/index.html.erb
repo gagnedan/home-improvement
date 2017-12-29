@@ -6,9 +6,9 @@
 <table class="table table-bordered push-10-t">
 <thead>
   <tr>
-    <td>Project</td>
+    <th>Project</th>
     <th>Commentaire</th>
-    <th>Action</th>
+    <th colspan="2">Action</th>
   </tr>
 </thead>
 <tbody>
@@ -16,6 +16,7 @@
   <tr>
     <td><%= comment.project.name%>
     <td><%= comment.body %></td>
+    <td><%= link_to "Edit", edit_admin_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>

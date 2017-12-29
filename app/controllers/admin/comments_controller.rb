@@ -4,7 +4,23 @@ class Admin::CommentsController < Admin::AdminController
   load_and_authorize_resource
 
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order(:id)
+  end
+
+  def edit
+
+  end
+
+  def update
+
+    @comment = Comment.find(params[:id])
+
+    if @comment.update_attributes(comment_params)
+      flash[:notice] = "Comment successfully updated!"
+      redirect_to admin_comments_path
+    else
+      render action: :edit
+    end
   end
 
   def destroy
@@ -18,6 +34,6 @@ class Admin::CommentsController < Admin::AdminController
   
   private
     def comment_params
-      params.require(:comment).permit(:body, :project_id, :user_id)
+      params.require(:comment).permit(:body)
     end
 end
