@@ -5,15 +5,10 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :comment, through: :project
 
 	def index
-    #@comments = Comment.all.accessible_by(current_ability)
     @comments = Comment.where(project_id: params[:project_id]).accessible_by(current_ability)
   end
 
-
-   def new
-   end
-
-   def create
+  def create
     @project = Project.find( params[:project_id] )
     @comment = @project.comments.build(comment_params)
     @comment.user_id = current_user.id
