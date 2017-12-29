@@ -92,10 +92,7 @@
     <div class="block-comment" id="<%="block#{project.id}"%>">
       <div class="row">
         <div class="col-sm-12">
-          <%= react_component 'Comment', { project_id: project.id} %>
-          <% if !is_admin? %>
-            <%= react_component 'CommentForm', { project_id: project.id} %>
-          <% end %>
+          <%= react_component 'Comment', { project_id: project.id, is_admin: is_admin?  } %>
         </div>
       </div>
       

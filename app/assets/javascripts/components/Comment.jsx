@@ -3,33 +3,68 @@ class Comment extends React.Component {
 		super(props);
 		this.state = {
 			project_id: props.project_id,
-			comments: [] 
+			is_admin: props.is_admin,
+			comments: []
 		};
+		this.onSubmit = this.onSubmit.bind(this);
+	}
+
+	onSubmit(comment) {
+		$.ajax({
+			url: "/projects/" + this.props.project_id + "/comments",
+			type: "POST",
+			data: { comment },
+			dataType: "json",
+			headers: {
+				"X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
+			},
+
+			success: function(response) {
+				// Get All object in the current comment state
+				// whthout the actual project updated
+				var comments = this.state.comments.filter(i => {
+					return i.id != comment.id;
+				});
+
+				// push the current comment in the array
+				comments.push(response);
+
+				// update state !
+				this.setState({ comments: comments });
+			}.bind(this)
+		});
 	}
 
 	componentDidMount() {
-		var project_id = this.props.project_id
+		var project_id = this.props.project_id;
 		$.getJSON("/projects/" + project_id + "/comments", response => {
 			this.setState({ comments: response });
 		});
 	}
 
 	render() {
-	var projectNodes = this.state.comments.map(function(comment, index) {
-			return (
-              <tr key={index}>
-                <td className="col-sm-12">
-                  <div><i className="glyphicon glyphicon-user"></i>
-                    <span className="push-5-l">{ comment.user.first_name } { comment.user.last_name }</span>
-                  </div>
-                  <div className="push-10-t">
-                    {comment.body}
-                  </div>
-                </td>
-              </tr>
-			);
+		var allComments = this.state.comments.map(function(comment, index) {
+			return <CommentItem key={index} comment={comment} />;
 		}, this);
 
-		return(<table className="table bg-gray-lighter push-10-t"><tbody>{projectNodes}</tbody></table>)
+		
+		var commentForm = null;
+		if(!this.state.is_admin) {
+			commentForm = <CommentForm
+						key={this.props.project_id}
+						project_id={this.props.project_id}
+						handleSubmit={this.onSubmit.bind(this)}
+					/>;
+		}
+
+
+		return (
+			<table className="table push-10-t">
+				<tbody>
+					{allComments}
+					{commentForm}
+				</tbody>
+			</table>
+		);
 	}
 }

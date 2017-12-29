@@ -36,7 +36,6 @@ class ProjectsController < ApplicationController
     current_user_id = current_user.id
     project_owner_id = @project.user_id
 
-    puts params.inspect
     respond_to do |format|
       if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
         format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }

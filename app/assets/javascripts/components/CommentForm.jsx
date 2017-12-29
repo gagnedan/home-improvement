@@ -1,47 +1,43 @@
 class CommentForm extends React.Component {
 	constructor(props) {
 		super(props);
-		project_id: props.project_id
-		comment: props.comment
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	componentDidMount() {
+	handleSubmit() {
+		var body = this.refs.body.value;
+		var comment = { body: body };
+		this.props.handleSubmit(comment);
 
+		// clean textarea
+		this.refs.body.value = "";
 	}
-
-	handleSubmit(event) {
-    event.preventDefault();
-    var project_id = this.props.project_id
-    const data = event.target.comment_body.value;
-    
-    
-
-    $.ajax({
-			url: "/projects/" + project_id + "/comments",
-			type: "POST",
-			data: {"comment[body]": data },
-			headers: {
-				"X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
-			}
-		});
-  }
 
 	render() {
 		return (
-			<form
-				className="new_comment"
-				id="new_comment"
-				onSubmit={this.handleSubmit}
-			>
-				<div className="form-group">
-					<label htmlFor="comment_body">Ajouter un commentaire</label>
-          <textarea id="comment_body" className="form-control" rows="2" name="comment[body]"></textarea>
-        </div>
-       	<div className="pull-right">
-					<input type="submit" name="commit" value="Submit" className="btn btn-primary" data-disable-with="Submit" />
-				</div>
-			</form>
+			<tr key={this.props.index}>
+				<td className="col-sm-12">
+					<div className="form-group">
+						<label htmlFor="comment_body">Ajouter un commentaire</label>
+						<textarea
+							id="body"
+							className="form-control"
+							rows="2"
+							name="body"
+							ref="body"
+						/>
+					</div>
+					<div className="pull-right">
+						<button
+							onClick={this.handleSubmit}
+							className="btn btn-primary"
+							data-disable-with="Submit"
+						>
+							Submit
+						</button>
+					</div>
+				</td>
+			</tr>
 		);
 	}
 }
