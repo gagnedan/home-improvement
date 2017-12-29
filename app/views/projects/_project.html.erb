@@ -1,0 +1,106 @@
+<div class="col-md-8 col-md-offset-2" data-project-id="<%= project.id%>">
+	<!-- Begin block container -->
+  <div class="block block-bordered block-rounded">
+  	<!-- Begin block header -->
+    <div class="block-header">
+      <div class="row">
+        <div class="col-sm-7">
+          <h2 class="block-title">
+            <% if project.is_public %>
+              <i class="glyphicon glyphicon-star push-5-r green-icon"></i>
+            <% else %>
+              <i class="glyphicon glyphicon-star push-5-r red-icon"></i>
+            <% end %>
+            <%= project.name %>
+          </h2>
+        </div>
+        <div class="col-sm-5">
+          <table class="table-bordered block-table text-center">
+            <tbody>
+              <tr>
+                <td class="col-sm-6 <%= project.status %>">
+                  <%= project.status.capitalize %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End block header -->
+
+    <!-- Begin block content -->
+    <div class="block-content">
+    	<div class="row">
+        <div class="col-sm-7">
+	        <i class="glyphicon glyphicon-user"></i>
+	        <span class="push-5-l push-5-r"><%= project.user.fullname %></span>
+	        <i class="glyphicon glyphicon-time"></i>
+	        <span class="push-5-l push-5-r">
+		    		<%= time_ago_in_words(project.created_at) %>
+		    	</span>
+        </div>
+      </div>
+
+      <div class="row push-10-t">
+        <div class="col-sm-7">
+          <div>
+            <%= project.description %>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <table class="table-bordered block-table bg-gray-lighter text-center">
+            <tbody>
+              <tr>
+                <td class="col-sm-6">
+                  <div>Estimated level of effort</div>
+                  <div class="h1">
+                    <%= project.estimated_effort %>
+                  </div>
+                </td>
+                <td class="col-sm-6">
+                  <div>Actual level of effort</div>
+                  <div class="h1">
+                    <%= project.actual_effort %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End block content -->
+
+    <!-- Begin block comment -->
+    <div class="block-comment-header">
+      <div class="row">
+        <div class="col-sm-7">
+          <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
+            <i class="glyphicon glyphicon-comment"></i><span class="push-5-l">Commenter</span>
+          <% end %>
+        </div>
+        <div class="col-sm-5">
+          <% if !is_admin? %>
+            <%= link_to edit_project_path(project), class:"pull-right" do %>
+              <i class="glyphicon glyphicon-edit"></i><span class="push-5-l">Modifier le projet</span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="block-comment" id="<%="block#{project.id}"%>">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= react_component 'Comment', { project_id: project.id} %>
+          <% if !is_admin? %>
+            <%= react_component 'CommentForm', { project_id: project.id} %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+    <!-- End block comment -->
+  </div>
+  <!-- End block container -->
+</div>
