@@ -12,11 +12,18 @@ class Ability
   end
 
   def admin
-    can :manage, :all
+
+    # Admin cannot create their own home-improvement project
+    cannot [:create], Project
+    # Admin can edit and update projet : see strong parameter for permit params
+    can [:edit, :update], Project
+    # Admin can read and destroy projet, comment and user
+    can [:read, :destroy], [Project, Comment, User]
+    # Admin can read and destroy projet and comment
+    can [:edit], [Project, Comment]
   end
 
   def user 
-    #can :manage, :all
 
     # Users will be able to create their own home-improvement project
     can [:create], Project
@@ -24,8 +31,8 @@ class Ability
     # Users will see all public projects
     can [:read, :edit, :update], Project, { :is_public => true}
 
-    # Users cannot delete projects
-    cannot [:delete], Project
+    # Users cannot delete projects, comments or userss
+    cannot [:destroy], [Project, Comment, User]
 
     # Users will be able to view a public project and its comments
     can [:read], Comment, project: { :is_public => true }
