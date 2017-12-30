@@ -15,3 +15,15 @@ user:
   encrypted_password: $2a$11$ysNYZjOsWh9VQ5UbWPvkd.rQBB0PDTt74RKMfLI/ADz5W3/XcBvLa
   facebook_id: 1736203643079667
   role: user
+
+luke:
+  email: luke@disney.com
+  first_name: Luke
+  last_name: Skywalker
+  role: user 
+
+leia:
+  email: leia@disney.com
+  first_name: Leia
+  last_name: Organa
+  role: user 

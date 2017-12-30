@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   class UserParams
     def self.build (params, current_user_role, current_user_id, project_owner_id)
       if current_user_role == "user" && current_user_id != project_owner_id  
-          params.require(:project).permit(:description, :is_public, :status)
+          params.require(:project).permit(:description, :status)
         else
           params.require(:project).permit(:name, :description, :is_public, :estimated_effort, :actual_effort, :status)
         end

@@ -44,9 +44,9 @@
         <div class="form-group">
           <%= form.label :visibility %><br />
           <%= form.label :is_public, "public", :value => "true"  %>
-          <%= form.radio_button :is_public, true%>
+          <%= form.radio_button :is_public, true, disabled: !is_owner?%>
           <%= form.label :is_public, "private", :value => "false", class: "push-10-l"%>
-          <%= form.radio_button :is_public, false%>
+          <%= form.radio_button :is_public, false, disabled: !is_owner?%>
         </div>
 
         <div class="form-group">

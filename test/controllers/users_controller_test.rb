@@ -5,8 +5,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 	# L'administrateur du système
 	setup do
     @admin = users(:admin)
-    @user = users(:user)
-    @admin_project = projects(:admin_project)
+    @luke = users(:luke)
+    @leia = users(:leia)
+    @public_project = projects(:public_project)
+    @private_project = projects(:private_project)
   end
 
   test "administrator should sign in successfully" do
@@ -16,8 +18,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 	end
 
 	test "user can create projet" do
-  	ability = Ability.new(@user)
-  	assert ability.can?(:create, Project.new(:user => @user))
+  	ability = Ability.new(@luke)
+  	assert ability.can?(:create, Project.new(:user => @luke))
 	end
 
 
@@ -27,10 +29,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		# to control which attributes of a model can be update
 		# based on a role
 		
-		# Send admin_project_params to Project Controller : simulate form post
-		# The Project we try to update is owned by admin
+		# Send project_params to Project Controller : simulate form post
+		# The Project we try to update is owned by leai and is public
+		# Luke will try to update project name and effort level
 		# The return params are a hash containing permit params
-		params = ProjectsController::UserParams.build(admin_project_params, @user.role, @user.id, @admin_project.user.id)
+		params = ProjectsController::UserParams.build(project_params, @luke.role, @luke.id, @leia.id)
 		
 		# The return hash should not contains those keys
 		# :name, :estimated_effort, and :actual_effort
@@ -48,15 +51,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 	end
 
 
-	def admin_project_params()
+	def project_params()
  
 		project_params = ActionController::Parameters.new( project: {
-			name: @admin_project.name, 
-			description: @admin_project.description,
-			is_public: @admin_project.is_public,
-			estimated_effort: @admin_project.estimated_effort,
-			actual_effort: @admin_project.actual_effort,
-			status: @admin_project.status
+			name: @public_project.name, 
+			description: @public_project.description,
+			is_public: @public_project.is_public,
+			estimated_effort: @public_project.estimated_effort,
+			actual_effort: @public_project.actual_effort,
+			status: @public_project.status
 			}).permit!
 	end
 

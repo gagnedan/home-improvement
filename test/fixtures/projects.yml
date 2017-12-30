@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-admin_project:
+private_project:
   name: Project 1
   description: MyText
   is_public: f
   estimated_effort: 10
   actual_effort: 10
   status: created
-  user: admin
+  user: luke
 
-user_project:
+public_project:
   name: Project 2
   description: MyText
   is_public: t
   estimated_effort: 10
   actual_effort: 10
   status: created
-  user: user
+  user: leia
