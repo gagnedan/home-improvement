@@ -8,24 +8,13 @@
   <!-- Begin block content -->
   <div class="block-content">
     <%= form_with(model: comment, url: admin_comment_path, local: true) do |form| %>
-      <% if comment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(comment.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-          <ul>
-          <% comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= errors_for(comment) %>
       <div class="form-group">
         <%= form.label :body %>
         <%= form.text_area :body, id: :comment_body, class:"form-control", rows: 10 %>
       </div>
 
       <div class="push-10-t text-center">
-
         <%= form.submit class: "btn btn-primary" %>
       </div>
     <% end %>
