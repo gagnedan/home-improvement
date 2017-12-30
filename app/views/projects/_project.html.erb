@@ -77,13 +77,13 @@
       <div class="row">
         <div class="col-sm-7">
           <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
-            <i class="glyphicon glyphicon-comment"></i><span class="push-5-l">Commenter</span>
+            <i class="glyphicon glyphicon-comment"></i><span class="push-5-l"><%= t('.comments') %></span>
           <% end %>
         </div>
         <div class="col-sm-5">
           <% if !is_admin? %>
             <%= link_to edit_project_path(project), class:"pull-right" do %>
-              <i class="glyphicon glyphicon-edit"></i><span class="push-5-l">Modifier le projet</span>
+              <i class="glyphicon glyphicon-edit"></i><span class="push-5-l"><%= t('.modify') %></span>
             <% end %>
           <% end %>
         </div>

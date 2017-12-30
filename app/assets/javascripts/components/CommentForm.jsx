@@ -18,7 +18,7 @@ class CommentForm extends React.Component {
 			<tr key={this.props.index}>
 				<td className="col-sm-12">
 					<div className="form-group">
-						<label htmlFor="comment_body">Ajouter un commentaire</label>
+						<label htmlFor="comment_body">Add Comment</label>
 						<textarea
 							id="body"
 							className="form-control"
@@ -33,7 +33,7 @@ class CommentForm extends React.Component {
 							className="btn btn-primary"
 							data-disable-with="Submit"
 						>
-							Submit
+							Create
 						</button>
 					</div>
 				</td>

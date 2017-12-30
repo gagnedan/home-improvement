@@ -9,6 +9,14 @@ en:
       new:
         sign_in: "Connexion"
         log_in: "Log in"
+
+  projects:
+    project:
+      comments: "Comments"
+      modify: "Modify the project"
+    form:
+      title: "Project"
+
   admin:
     projects:
       index:
