@@ -1,4 +1,14 @@
 en:
+  project_title: "Home Improvement"
+  project_new: "Create project"
+  site_admin: 'Administration'
+  sign_out: 'Sign out'
+
+  devise:
+    sessions:
+      new:
+        sign_in: "Connexion"
+        log_in: "Log in"
   admin:
     projects:
       index:
@@ -36,6 +46,8 @@ en:
         actions: "Actions"
         destroy: "Delete"
         confirm: "Are you sure?"
+
+
 
 ############# FORM HELPER LABEL #############
   helpers:

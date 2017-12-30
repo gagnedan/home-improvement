@@ -3,7 +3,7 @@
   <div class="block block-bordered block-rounded">
     <!-- Begin block header -->
     <div class="block-header">
-      <h2 class="block-title">Connexion</h2>
+      <h2 class="block-title"><%= t('.sign_in') %></h2>
     </div>
     <!-- End block header -->
 
@@ -26,7 +26,7 @@
             <%= render "devise/shared/links" %>
           </div>
           <div class="col-sm-6 text-right">
-            <%= f.submit "Log in", class: "btn btn-primary"%>
+            <%= f.submit t('.log_in'), class: "btn btn-primary"%>
           </div>
         </div>
 
