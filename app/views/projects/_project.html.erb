@@ -75,9 +75,12 @@
     <!-- Begin block comment -->
     <div class="block-comment-header">
       <div class="row">
+        
         <div class="col-sm-7">
-          <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
-            <i class="glyphicon glyphicon-comment"></i><span class="push-5-l"><%= t('.comments') %></span>
+          <% if project.is_public? %>
+            <%= link_to "javascript:toggle_visibility('block#{project.id}');" do %>
+              <i class="glyphicon glyphicon-comment"></i><span class="push-5-l"><%= t('.comments') %></span>
+            <% end %>
           <% end %>
         </div>
         <div class="col-sm-5">
@@ -89,13 +92,14 @@
         </div>
       </div>
     </div>
+    <% if project.is_public? %>
     <div class="block-comment" id="<%="block#{project.id}"%>">
       <div class="row">
         <div class="col-sm-12">
           <%= react_component 'Comment', { project_id: project.id, is_admin: is_admin?  } %>
         </div>
       </div>
-      
+    <% end %>  
     </div>
     <!-- End block comment -->
   </div>
