@@ -6,7 +6,7 @@ class CommentItem extends React.Component {
 	render() {
 		return (
 			<tr key={this.props.index}>
-				<td className="col-sm-12 bg-gray-lighter">
+				<td className="col-sm-12">
 					<div>
 						<i className="glyphicon glyphicon-user" />
 						<span className="push-5-l">

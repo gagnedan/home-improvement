@@ -64,7 +64,7 @@ class Comment extends React.Component {
 
 
 		return (
-			<table className="table push-10-t">
+			<table className="table table-striped push-10-t">
 				<tbody>
 					{allComments}
 					{commentForm}
