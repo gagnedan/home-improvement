@@ -1,37 +1,35 @@
-<div class="col-md-10 col-md-offset-1 push-10-t">
-  <!-- Begin block container -->
-  <div class="block block-bordered block-rounded">
-    <!-- Begin block header -->
-    <div class="block-header">
-      <h2 class="block-title"><%= t('.comment') %></h2>
-    </div>
-    <!-- End block header -->
-    <!-- Begin block content -->
-    <div class="block-content">
-      <%= form_with(model: comment, url: admin_comment_path, local: true) do |form| %>
-        <% if comment.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(comment.errors.count, "error") %> prohibited this project from being saved:</h2>
+<!-- Begin block container -->
+<div class="block block-bordered block-rounded">
+  <!-- Begin block header -->
+  <div class="block-header">
+    <h2 class="block-title"><%= t('.comment') %></h2>
+  </div>
+  <!-- End block header -->
+  <!-- Begin block content -->
+  <div class="block-content">
+    <%= form_with(model: comment, url: admin_comment_path, local: true) do |form| %>
+      <% if comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(comment.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-            <ul>
-            <% comment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <div class="form-group">
-          <%= form.label :body %>
-          <%= form.text_area :body, id: :comment_body, class:"form-control", rows: 10 %>
-        </div>
-
-        <div class="push-10-t text-center">
-
-          <%= form.submit class: "btn btn-primary" %>
+          <ul>
+          <% comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
-    <!-- End block content -->
+      <div class="form-group">
+        <%= form.label :body %>
+        <%= form.text_area :body, id: :comment_body, class:"form-control", rows: 10 %>
+      </div>
+
+      <div class="push-10-t text-center">
+
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <!-- End block container -->
+  <!-- End block content -->
 </div>
+<!-- End block container -->

@@ -15,14 +15,19 @@
   </div>
   
   <!-- END HEADER -->
-  <div class="bg-gray-lighter">
-    <div class="container">
-      <%= render "application/admin/sub_nav" %>
+    <div class="container push-20-t">
+      <div class="row">
+        <div class="col-md-2">
+          <%= render "application/admin/sub_nav" %>
+        </div>
+        <div class="col-md-10">
+          <%= render "flash_alert" %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="container push-20-t">
-    <%= render "flash_alert" %>
-    <%= yield %>
-  </div> 
+
+
+
   </body>
 </html>

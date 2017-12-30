@@ -1,42 +1,40 @@
-<div class="col-md-10 col-md-offset-1 push-10-t">
-  <!-- Begin block container -->
-  <div class="block block-bordered block-rounded">
-    <!-- Begin block header -->
-    <div class="block-header">
-      <h2 class="block-title">Project</h2>
-    </div>
-    <!-- End block header -->
-    <!-- Begin block content -->
-    <div class="block-content">
-      <%= form_with(model: project, url: admin_project_path, local: true) do |form| %>
-        <% if project.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<!-- Begin block container -->
+<div class="block block-bordered block-rounded">
+  <!-- Begin block header -->
+  <div class="block-header">
+    <h2 class="block-title">Project</h2>
+  </div>
+  <!-- End block header -->
+  <!-- Begin block content -->
+  <div class="block-content">
+    <%= form_with(model: project, url: admin_project_path, local: true) do |form| %>
+      <% if project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-            <ul>
-            <% project.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="form-group">
-          <%= form.label :name %>
-          <%= form.text_field :name, id: :project_name, class:"form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :description %>
-          <%= form.text_area :description, id: :project_description, class:"form-control", rows: 5%>
-        </div>
-
-        <div class="push-10-t text-center">
-          <%= form.submit "Submit", class: "btn btn-primary" %>
+          <ul>
+          <% project.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
-    <!-- End block content -->
+
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :project_name, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :project_description, class:"form-control", rows: 5%>
+      </div>
+
+      <div class="push-10-t text-center">
+        <%= form.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <!-- End block container -->
+  <!-- End block content -->
 </div>
+<!-- End block container -->
