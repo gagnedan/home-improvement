@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-		padding-top: 70px;
+		padding-top: 51px;
     font-family: $font-family-base;
     font-size: $font-size-base;
     color: $text-color;
@@ -32,6 +32,10 @@ h6,
   font-weight: 600;
   line-height: 1.2;
   color: inherit;
+}
+
+.navbar {
+  margin-bottom: 0px;
 }
 
 .navbar-default {

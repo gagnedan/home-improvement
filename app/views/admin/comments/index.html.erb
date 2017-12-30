@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Comments</h1>
+<h2>Comments</h2>
 
 
-<table class="table table-bordered push-10-t">
+<table class="table table-striped push-10-t">
 <thead>
   <tr>
-    <th>Project</th>
-    <th>Commentaire</th>
-    <th colspan="2">Action</th>
+    <th><%= t('.project') %></th>
+    <th><%= t('.comment') %></th>
+    <th colspan="2"><%= t('.actions') %></th>
   </tr>
 </thead>
 <tbody>
@@ -16,8 +14,8 @@
   <tr>
     <td><%= comment.project.name%>
     <td><%= comment.body %></td>
-    <td><%= link_to "Edit", edit_admin_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('.edit'), edit_admin_comment_path(comment) %></td>
+    <td><%= link_to t('.destroy'), admin_comment_path(comment), method: :delete, data: { confirm: t('.confirm') } %></td>
   </tr>
   <% end %>
 </tbody>

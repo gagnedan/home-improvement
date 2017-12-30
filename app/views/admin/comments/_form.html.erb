@@ -3,7 +3,7 @@
   <div class="block block-bordered block-rounded">
     <!-- Begin block header -->
     <div class="block-header">
-      <h2 class="block-title">Project</h2>
+      <h2 class="block-title"><%= t('.comment') %></h2>
     </div>
     <!-- End block header -->
     <!-- Begin block content -->
@@ -26,7 +26,8 @@
         </div>
 
         <div class="push-10-t text-center">
-          <%= form.submit "Submit", class: "btn btn-primary" %>
+
+          <%= form.submit class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>

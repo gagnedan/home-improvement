@@ -30,4 +30,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin:
+    comments:
+      index:
+        project: "Project"
+        comment: "Comment"
+        actions: "Actions"
+        edit: "Edit"
+        destroy: "Delete"
+        confirm: "Are you sure?"
+      form:
+        comment: "Comment"
+
+
+############# FORM HELPER LABEL #############
+  helpers:
+    label:
+      comment:
+        body: "Comment"
+############# SUBMIT BUTTON #############
+  helpers:
+    submit:
+      create: "Create"
+      update: "Save"
+
+
