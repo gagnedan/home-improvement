@@ -10,6 +10,8 @@ en:
         edit: "Edit"
         destroy: "Delete"
         confirm: "Are you sure?"
+      form:
+        title: "Projects" 
 
     comments:
       index:
@@ -23,9 +25,17 @@ en:
         confirm: "Are you sure?"
       form:
         body: "Comment"
-
-
-
+        title: "Comments"
+    
+    users:
+      index:
+        title: "Users"
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        actions: "Actions"
+        destroy: "Delete"
+        confirm: "Are you sure?"
 
 ############# FORM HELPER LABEL #############
   helpers:

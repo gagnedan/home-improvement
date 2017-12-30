@@ -1,15 +1,15 @@
 <div class="block block-bordered block-rounded">
   <div class="block-header">
-    <h3 class="block-title">Users</h2>
+    <h3 class="block-title"><%= t('.title') %></h2>
   </div>
   <div class="block-content">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
-          <th style="width: 60%;">Email</th>
-          <th>Role</th>
-          <th style="width: 100px;" class="text-center">Actions</th>
+          <th><%= t('.name') %></th>
+          <th style="width: 60%;"><%= t('.email') %></th>
+          <th><%= t('.role') %></th>
+          <th style="width: 100px;" class="text-center"><%= t('.actions') %></th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +18,7 @@
           <td><%= user.fullname %></td>
           <td><%= user.email %></td>
           <td><%= user.role %></td>
-          <td class="text-center"><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="text-center"><%= link_to t('.destroy'), admin_user_path(user), method: :delete, data: { confirm: t('.confirm') } %></td>
         </tr>
         <% end %>
       </tbody>
