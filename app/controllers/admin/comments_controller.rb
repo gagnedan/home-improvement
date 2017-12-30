@@ -16,7 +16,7 @@ class Admin::CommentsController < Admin::AdminController
     @comment = Comment.find(params[:id])
 
     if @comment.update_attributes(comment_params)
-      flash[:notice] = "Comment successfully updated!"
+      flash[:notice] = t("flash.message.comment.update")
       redirect_to admin_comments_path
     else
       render action: :edit
@@ -25,7 +25,7 @@ class Admin::CommentsController < Admin::AdminController
 
   def destroy
     @comment.destroy
-    flash[:notice] = "Comment successfully deleted!"
+    flash[:notice] = t("flash.message.comment.destroy")
     redirect_to admin_comments_path
   end
 

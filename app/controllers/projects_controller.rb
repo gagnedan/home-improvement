@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
 
     if @project.save
-      flash[:notice] = "Project successfully created!"
+      flash[:notice] = t("flash.message.project.create")
       redirect_to projects_path
     else
       render :new
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update(UserParams.build(params, current_user_role, current_user_id, project_owner_id))
-        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_path, notice: t("flash.message.project.update") }
         format.json { head :no_content }
       else
         format.html { render :new }

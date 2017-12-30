@@ -16,7 +16,7 @@ class Admin::ProjectsController < Admin::AdminController
     @project = Project.find(params[:id])
 
     if @project.update_attributes(project_params)
-      flash[:notice] = "Project successfully updated!"
+      flash[:notice] = t("flash.message.project.update")
       redirect_to admin_projects_path
     else
       render action: :edit
@@ -25,7 +25,7 @@ class Admin::ProjectsController < Admin::AdminController
 
   def destroy
     @project.destroy
-    flash[:notice] = "Project successfully deleted!"
+    flash[:notice] = t("flash.message.project.destroy")
     redirect_to admin_projects_path
   end
 

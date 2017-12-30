@@ -55,9 +55,6 @@ en:
         destroy: "Delete"
         confirm: "Are you sure?"
 
-
-
-############# FORM HELPER LABEL #############
   helpers:
     label:
       comment:
@@ -65,7 +62,18 @@ en:
     submit:
       create: "Create"
       update: "Save"
-############# SUBMIT BUTTON #############
+  
+  flash:
+    message:
+      comment:
+        update: "Comment successfully updated!"
+        destroy: "Comment successfully deleted!"
+      project:
+        create: "Project successfully created!"
+        update: "Project successfully updated!"
+        destroy: "Project successfully deleted!"
+      user:
+        destroy: "User successfully deleted!"
 
 
 
