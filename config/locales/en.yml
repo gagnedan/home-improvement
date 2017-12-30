@@ -1,15 +1,29 @@
 en:
   admin:
+    projects:
+      index:
+        title: "Projects"
+        name: "Name"
+        description: "Description"
+        owner: "Owner"
+        actions: "Actions"
+        edit: "Edit"
+        destroy: "Delete"
+        confirm: "Are you sure?"
+
     comments:
       index:
+        title: "Comments"
         project: "Project"
         comment: "Comment"
+        user: "User"
         actions: "Actions"
         edit: "Edit"
         destroy: "Delete"
         confirm: "Are you sure?"
       form:
         body: "Comment"
+
 
 
 
