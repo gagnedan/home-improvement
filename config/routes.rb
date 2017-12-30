@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   root :to => "devise/sessions#new"
 
   resources :projects, :shallow => true do
-  	resources :comments
+  	resources :comments, only: [:index, :create]
   end
 
   namespace :admin do
     resources :projects
-    resources :users
+    resources :users, only: [:index, :destroy]
     resources :comments
   end
 
