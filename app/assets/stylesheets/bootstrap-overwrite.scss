@@ -52,6 +52,18 @@ h6,
   }
 }
 
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th {
+    padding: 16px 10px 12px;
+    font-family: "Source Sans Pro", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.table > thead > tr > th {
+    border-bottom: 0px;
+}
+
 .alert-notice {
   @extend .alert-success;
 }

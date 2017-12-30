@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2 push-10-t">
+<div class="col-md-10 col-md-offset-1 push-10-t">
   <!-- Begin block container -->
   <div class="block block-bordered block-rounded">
     <!-- Begin block header -->
@@ -8,7 +8,7 @@
     <!-- End block header -->
     <!-- Begin block content -->
     <div class="block-content">
-    <%= form_with(model: comment, url: admin_comment_path, local: true) do |form| %>
+      <%= form_with(model: comment, url: admin_comment_path, local: true) do |form| %>
         <% if comment.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(comment.errors.count, "error") %> prohibited this project from being saved:</h2>
