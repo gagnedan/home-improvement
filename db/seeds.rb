@@ -16,27 +16,36 @@ admin = User.new(
   )
 admin.save!
 
-user = User.new(
-      :email => "michel@lexop.com",
-      :first_name => "Michel",
-      :last_name => "Jamati",
+luke = User.new(
+      :email => "luke@disney.com",
+      :first_name => "Luke",
+      :last_name => "Skywalker",
       :password => "123456",
       :password_confirmation => "123456",
       :role => "user" 
   )
-user.save!
-10.times do | x |
+  luke.save!
+
+leia = User.new(
+      :email => "leia@disney.com",
+      :first_name => "Leia",
+      :last_name => "Organa",
+      :password => "123456",
+      :password_confirmation => "123456",
+      :role => "user" 
+  )
+  leia.save!
+
 public_project = Project.new(
-		:name => "Project #{x}",
+		:name => "Project 1",
     :description => "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.",
     :is_public => true,
     :estimated_effort => 8,
     :actual_effort => 10,
     :status => "created",
-    :user => user
+    :user => luke
 	)
 	public_project.save!
-end
 
 private_project = Project.new(
 		:name => "Project 2",
@@ -45,7 +54,21 @@ private_project = Project.new(
     :estimated_effort => 6,
     :actual_effort => 7,
     :status => "created",
-    :user => user
+    :user => leia
 	)
 	private_project.save!
+
+comment1 = Comment.new(
+  :body => "Iam virtutem ex consuetudine vitae sermonisque nostri interpretemur nec eam, ut quidam docti, verborum magnificentia metiamur virosque bonos eos.",
+  :project => public_project,
+  :user => luke
+  )
+  comment1.save!
+
+comment2 = Comment.new(
+  :body => "Iam virtutem ex consuetudine vitae sermonisque nostri interpretemur nec eam, ut quidam docti, verborum magnificentia metiamur virosque bonos eos.",
+  :project => public_project,
+  :user => leia
+  )
+  comment2.save!
 

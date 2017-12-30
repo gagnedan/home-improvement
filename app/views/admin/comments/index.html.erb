@@ -6,8 +6,9 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th><%= t('.project') %></th>
-          <th><%= t('.comment') %></th>
+          <th>Project</th>
+          <th style="width: 60%;">Comment</th>
+          <th>User</th>
           <th style="width: 100px;" class="text-center"><%= t('.actions') %></th>
         </tr>
       </thead>
@@ -16,6 +17,7 @@
         <tr>
           <td><%= comment.project.name%>
           <td><%= comment.body %></td>
+          <td><%= comment.user.fullname %></td>
           <td class="text-center">
             <span class="pull-left">
             <%= link_to t('.edit'), edit_admin_comment_path(comment) %>
